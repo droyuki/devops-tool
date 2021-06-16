@@ -1,6 +1,9 @@
 
 ## Release History
 
+* 1.0.5
+    * Support gitlab-group-id
+
 * 1.0.3
     * Support --ignore-ssl
 

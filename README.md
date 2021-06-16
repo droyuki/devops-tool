@@ -16,7 +16,7 @@ mv gofer-macos /usr/local/bin/gofer
 mv gofer-linux /usr/local/bin/gofer
 ```
 ### Wondows
-Run gofer-windows.exe in CMD
+Run gofer-win.exe in CMD
 
 ## Usage example
 
@@ -27,14 +27,14 @@ gofer -h
 Usage: gofer [options] [command]
 
 Options:
-  --init [path]         create config.json to <path>
   -c, --config <path>  config file
   -v, --version        output the version number
   -h, --help           display help for command
 
 Commands:
+  init [path]          create config.json to [path]
   gitlab               execcute gitlab tool
-  docker             execcute docker tool
+  docker               execcute docker tool
   k8s                  execcute k8s tool
   help [command]       display help for command
 

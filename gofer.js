@@ -13,7 +13,7 @@ function parseArgs() {
 
   program
     .option('-c, --config <path>', 'config file')
-    .version('1.0.1', '-v, --version');
+    .version('1.0.2', '-v, --version');
 
   program
     .command('init [path]')
@@ -47,7 +47,6 @@ function initConfig(initConfigPath) {
   const content = {
     'gitlab-api': 'https://gitlab.com/api/v4',
     'gitlab-token': 'YOUR_GITLAB_TOKEN',
-    workspace: '',
     projects: [],
   };
 

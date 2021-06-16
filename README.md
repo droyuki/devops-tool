@@ -46,10 +46,7 @@ Create config.json at the first time
 ```
 gofer init [path]
 
-```
-
-config.json
-```json
+# config.json
 {
     "gitlab-api": "https://gitlab.com/api/v4",
     "gitlab-token": "YOUR_GITLAB_TOKEN",

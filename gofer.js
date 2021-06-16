@@ -13,7 +13,8 @@ function parseArgs() {
 
   program
     .option('-c, --config <path>', 'config file')
-    .version('1.0.2', '-v, --version');
+    .option('--ignore-ssl [true]')
+    .version('1.0.3', '-v, --version');
 
   program
     .command('init [path]')
@@ -34,7 +35,12 @@ function parseArgs() {
   program.parse();
 
   const [action, initConfigPath] = program.args;
-  const opts = program.opts();
+  const { ignoreSsl, ...opts } = program.opts();
+
+  if (ignoreSsl) {
+    logger.log('ignore ssl')
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+  }
 
   return { action, initConfigPath, ...opts };
 }

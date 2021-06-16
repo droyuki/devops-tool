@@ -2,6 +2,7 @@
 
 const clear = require('clear');
 const fs = require('fs');
+const homedir = require('os').homedir();
 const { Command } = require('commander');
 const logger = require('./lib/logger');
 const { getAction, selectProject } = require('./lib/question');
@@ -12,11 +13,11 @@ function parseArgs() {
 
   program
     .option('-c, --config <path>', 'config file')
-    .version('1.0.0', '-v, --version');
+    .version('1.0.1', '-v, --version');
 
   program
     .command('init [path]')
-    .description('create config.json to [path]');
+    .description('create gfconfig');
 
   program
     .command('gitlab')
@@ -39,7 +40,7 @@ function parseArgs() {
 }
 
 function initConfig(initConfigPath) {
-  const configFile = initConfigPath || `${process.cwd()}/config.json`;
+  const configFile = initConfigPath || `${homedir}/gfconfig`;
 
   logger.log(`Creating ${configFile}`);
 
@@ -65,15 +66,20 @@ function initConfig(initConfigPath) {
 }
 
 function getConfig(opts) {
-  const { config } = opts;
+  const { config = `${homedir}/gfconfig` } = opts;
 
-  if (!config) {
-    logger.error('Config not found!');
+  try {
+    if (fs.existsSync(config)) {
+      const file = fs.readFileSync(`${config}`).toString();
+      return JSON.parse(file);
+    } else {
+      logger.error('Config not found!');
+      process.exit();
+    }
+  } catch (error) {
+    logger.error(error);
     process.exit();
   }
-
-  const file = fs.readFileSync(`${config}`).toString();
-  return JSON.parse(file);
 }
 
 async function main() {

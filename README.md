@@ -2,8 +2,6 @@
 > A gofer for devops developer
 
 
-![](header.png)
-
 ## Installation
 Donwload latest [Release](https://github.com/droyuki/gofer/releases)
 
@@ -32,28 +30,29 @@ Options:
   -h, --help           display help for command
 
 Commands:
-  init [path]          create config.json to [path]
+  init [path]          create gfconfig
   gitlab               execcute gitlab tool
   docker               execcute docker tool
   k8s                  execcute k8s tool
   help [command]       display help for command
-
 ```
 
 ## Config.json
 
 Create config.json at the first time
+
+gofer will save gfconfig under home directory if path not specified
+
 ```
 gofer init [path]
 
-# config.json
+# ~/gfconfig
 {
     "gitlab-api": "https://gitlab.com/api/v4",
     "gitlab-token": "YOUR_GITLAB_TOKEN",
     "projects": []
 }
 ```
-
 
 
 

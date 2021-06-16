@@ -64,11 +64,6 @@ All you need is nodejs, then run npm install
 npm install
 ```
 
-## Release History
-
-* 1.0.0
-    * Support gitlab
-
 ## Meta
 
 Distributed under the MIT license.

@@ -14,7 +14,7 @@ function parseArgs() {
   program
     .option('-c, --config <path>', 'config file')
     .option('--ignore-ssl [true]')
-    .version('1.0.3', '-v, --version');
+    .version('1.0.4', '-v, --version');
 
   program
     .command('init [path]')

@@ -50,7 +50,10 @@ gofer init [path]
 {
     "gitlab-api": "https://gitlab.com/api/v4",
     "gitlab-token": "YOUR_GITLAB_TOKEN",
-    "projects": []
+    "projects": [],
+
+    // Optional
+    'gitlab-group-id': 1, 
 }
 ```
 

@@ -9,16 +9,27 @@ const { getAction, selectProject } = require('./lib/question');
 
 const handler = require('./lib/handler');
 
-function getConfig() {
+function parseArgs() {
   const program = new Command();
-  program.version('0.0.1', '-v, --version');
 
   program
     .option('--init [path]', ' create config.json to <path>')
     .option('-c, --config <path>', 'config file')
-    .parse();
+    .version('1.0.0', '-v, --version');
 
-  const { init, config } = program.opts();
+  program.command('gitlab').description('execcute gitlab tool');
+  program.command('docker').description('execcute docker tool');
+  program.command('k8s').description('execcute k8s tool');
+  program.parse();
+
+  const [action] = program.args;
+  const opts = program.opts();
+
+  return { action, ...opts };
+}
+
+function getConfig(opts) {
+  const { init, config } = opts;
 
   if (init) {
     const configFile =
@@ -58,13 +69,11 @@ function getConfig() {
 
 async function main() {
   logger.logo();
-  const config = getConfig();
-
-  const { action: rawAction } = await getAction();
+  const { action, ...opts } = parseArgs();
+  const config = getConfig(opts);
   const { projects } = await selectProject(config.projects);
-  const action = /\[.*?\]/.exec(rawAction)[0].slice(1, -1);
 
-  return handler[action](config);
+  return handler[action](projects, config);
 }
 
 main();

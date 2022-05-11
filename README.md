@@ -31,6 +31,7 @@ Options:
 
 Commands:
   init [path]          create gfconfig
+  azure                execcute azure tool
   gitlab               execcute gitlab tool
   docker               execcute docker tool
   k8s                  execcute k8s tool
@@ -48,8 +49,8 @@ gofer init [path]
 
 # ~/gfconfig
 {
-    "gitlab-api": "https://gitlab.com/api/v4",
-    "gitlab-token": "YOUR_GITLAB_TOKEN",
+    "git-api": "https://gitlab.com/api/v4",
+    "git-pat": "YOUR_GITLAB_TOKEN",
     "projects": [],
 
     // Optional

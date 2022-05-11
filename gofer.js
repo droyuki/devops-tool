@@ -5,7 +5,7 @@ const fs = require('fs');
 const homedir = require('os').homedir();
 const { Command } = require('commander');
 const logger = require('./lib/logger');
-const { getAction, selectProject } = require('./lib/question');
+const { selectProject, getJiraLoginInfo } = require('./lib/question');
 const handler = require('./lib/handler');
 
 function parseArgs() {
@@ -14,11 +14,15 @@ function parseArgs() {
   program
     .option('-c, --config <path>', 'config file')
     .option('--ignore-ssl [true]')
-    .version('1.0.4', '-v, --version');
+    .version('1.0.5', '-v, --version');
 
   program
     .command('init [path]')
     .description('create gfconfig');
+
+  program
+    .command('azure')
+    .description('execcute azure tool');
 
   program
     .command('gitlab')
@@ -51,8 +55,8 @@ function initConfig(initConfigPath) {
   logger.log(`Creating ${configFile}`);
 
   const content = {
-    'gitlab-api': 'https://gitlab.com/api/v4',
-    'gitlab-token': 'YOUR_GITLAB_TOKEN',
+    'git-api': 'https://gitlab.com/api/v4',
+    'git-pat': 'YOUR_GITLAB_TOKEN',
     projects: [],
   };
 

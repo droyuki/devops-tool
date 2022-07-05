@@ -1,19 +1,25 @@
 # gofer
+
 > A gofer for devops developer
 
-
 ## Installation
+
 Donwload latest [Release](https://github.com/droyuki/gofer/releases)
 
 ### MacOS
+
 ```
 mv gofer-macos /usr/local/bin/gofer
 ```
+
 ### Linux
+
 ```
 mv gofer-linux /usr/local/bin/gofer
 ```
+
 ### Wondows
+
 Run gofer-win.exe in CMD
 
 ## Usage example
@@ -30,7 +36,7 @@ Options:
   -h, --help           display help for command
 
 Commands:
-  init [path]          create gfconfig
+  init [path]          create .mcloudconfig
   azure                execcute azure tool
   gitlab               execcute gitlab tool
   docker               execcute docker tool
@@ -42,23 +48,21 @@ Commands:
 
 Create config.json at the first time
 
-gofer will save gfconfig under home directory if path not specified
+gofer will save .mcloudconfig under home directory if path not specified
 
 ```
 gofer init [path]
 
-# ~/gfconfig
+# ~/.mcloudconfig
 {
     "git-api": "https://gitlab.com/api/v4",
     "git-pat": "YOUR_GITLAB_TOKEN",
     "projects": [],
 
     // Optional
-    'gitlab-group-id': 1, 
+    'gitlab-group-id': 1,
 }
 ```
-
-
 
 ## Development setup
 

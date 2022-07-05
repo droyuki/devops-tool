@@ -1,9 +1,9 @@
 {
-  "name": "gofer",
+  "name": "mcloud-git-tool",
   "version": "1.0.5",
   "description": "",
-  "main": "gofer.js",
-  "bin": "gofer.js",
+  "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pkg ."

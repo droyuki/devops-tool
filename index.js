@@ -18,7 +18,7 @@ function parseArgs() {
 
   program
     .command('init [path]')
-    .description('create gfconfig');
+    .description('create .mcloudconfig');
 
   program
     .command('azure')
@@ -28,13 +28,13 @@ function parseArgs() {
     .command('gitlab')
     .description('execcute gitlab tool');
 
-  program
-    .command('docker')
-    .description('execcute docker tool');
+  // program
+  //   .command('docker')
+  //   .description('execcute docker tool');
 
-  program
-    .command('k8s')
-    .description('execcute k8s tool');
+  // program
+  //   .command('k8s')
+  //   .description('execcute k8s tool');
 
   program.parse();
 
@@ -50,7 +50,7 @@ function parseArgs() {
 }
 
 function initConfig(initConfigPath) {
-  const configFile = initConfigPath || `${homedir}/gfconfig`;
+  const configFile = initConfigPath || `${homedir}/.mcloudconfig`;
 
   logger.log(`Creating ${configFile}`);
 
@@ -75,7 +75,7 @@ function initConfig(initConfigPath) {
 }
 
 function getConfig(opts) {
-  const { config = `${homedir}/gfconfig` } = opts;
+  const { config = `${homedir}/.mcloudconfig` } = opts;
 
   try {
     if (fs.existsSync(config)) {
@@ -100,7 +100,7 @@ async function main() {
   }
 
   const config = getConfig(opts);
-  const { projects } = await selectProject(config.projects);
+  const { projects } = await selectProject(config.projects, action);
 
   return handler[action](projects, config);
 }
